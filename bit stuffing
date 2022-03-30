@@ -1,0 +1,43 @@
+#include <iostream>
+
+using namespace std;
+
+void bitStuffing(int n , int arr[]){
+    int i=0 , j=0 , k ,brr[30] ,count=1 ;
+    while(i<n){
+       if(arr[i] == 1){
+           brr[i]=arr[i];
+          for( k= i+1 ; k<n && arr[k]==1 && count<5 ; k++){
+              i++;
+              brr[k]=arr[k];
+              count++;
+           }
+           if(count == 5 && arr[k]==1){
+               i++;
+               brr[i]=0;
+               i++;
+               brr[i]=1;
+           }
+           
+       }else{
+           brr[i]=arr[i];
+           i++;
+       }
+       
+    }
+    i=0;
+    while(i < n+1){
+       cout<<brr[i]<<"\t";
+       i++;
+    }
+    
+    
+}
+
+int main()
+{
+    int n=7 , arr[]={1,1,1,1,1,1,1};
+    bitStuffing(n , arr);
+
+    return 0;
+}
