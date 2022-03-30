@@ -1,0 +1,40 @@
+fun main(){
+
+     val simpleThread1 = SimpleThread1()
+    val simpleThread2 = SimpleThread2()
+
+   simpleThread1.start()
+    simpleThread2.start()
+
+    val lambda1=Thread{
+       for (i in 100 .. 110){
+           println("this $i")
+       }
+    }
+    val lambda2=Thread{
+        for (i in 111..120){
+            println("   this $i")
+        }
+    }
+    lambda1.start()
+    lambda2.start()
+
+
+ }
+ class SimpleThread1: Thread(){
+
+     override fun run() {
+         for (i in 1..25) {
+             println("  ${currentThread()} has run $i")
+         }
+     }
+
+ }
+
+ class SimpleThread2:Thread(){
+    override fun run() {
+        for (i in 26..50) {
+            println("${currentThread()} has run$i")
+        }
+    }
+ }
